@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/asjdf/gorm-cache/util"
+	"github.com/swordkee/gorm-cache-v2/util"
 )
 
 var _ DataStorage = &Memory{}

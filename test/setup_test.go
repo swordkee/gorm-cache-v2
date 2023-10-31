@@ -1,20 +1,28 @@
 package test
 
 import (
-	"github.com/asjdf/gorm-cache/storage"
+	"fmt"
 	"github.com/bluele/gcache"
+	"github.com/swordkee/gorm-cache-v2/storage"
 	"os"
 	"testing"
 
 	"gorm.io/gorm/logger"
 
-	"github.com/asjdf/gorm-cache/cache"
+	"github.com/swordkee/gorm-cache-v2/cache"
 
-	"github.com/asjdf/gorm-cache/config"
-	"github.com/glebarez/sqlite"
+	"github.com/swordkee/gorm-cache-v2/config"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
+var (
+	username     = "root"
+	password     = "Zcydf741205,."
+	databaseName = "site_reldb"
+	ip           = "localhost"
+	port         = "3306"
+)
 var (
 	searchCache  cache.Cache
 	primaryCache cache.Cache
@@ -36,13 +44,9 @@ func TestMain(m *testing.M) {
 	var err error
 	//logger.Default.LogMode(logger.Info)
 
-	f, err := os.CreateTemp("", "gormCacheTest.*.db")
-	if err != nil {
-		log("create temp db error: %v", err)
-		os.Exit(-1)
-	}
-	defer os.Remove(f.Name())
-	originalDB, err = gorm.Open(sqlite.Open(f.Name()), &gorm.Config{
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+		username, password, ip, port, databaseName)
+	originalDB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
 		CreateBatchSize: 1000,
 		Logger:          logger.Default,
 	})

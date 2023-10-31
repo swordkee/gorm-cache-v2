@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/asjdf/gorm-cache/storage"
-	"github.com/asjdf/gorm-cache/util"
+	"github.com/swordkee/gorm-cache-v2/storage"
+	"github.com/swordkee/gorm-cache-v2/util"
 )
 
 type CacheConfig struct {

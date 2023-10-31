@@ -14,8 +14,8 @@
 ```go
 import (
     "context"
-    "github.com/asjdf/gorm-cache/cache"
-    "github.com/asjdf/gorm-cache/storage"
+    "github.com/swordkee/gorm-cache-v2/cache"
+    "github.com/swordkee/gorm-cache-v2/storage"
     "github.com/redis/go-redis/v9"
 )
 

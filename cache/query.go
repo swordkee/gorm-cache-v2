@@ -3,10 +3,10 @@ package cache
 import (
 	"errors"
 	"fmt"
-	"github.com/asjdf/gorm-cache/config"
-	"github.com/asjdf/gorm-cache/storage"
-	"github.com/asjdf/gorm-cache/util"
 	"github.com/hashicorp/go-multierror"
+	"github.com/swordkee/gorm-cache-v2/config"
+	"github.com/swordkee/gorm-cache-v2/storage"
+	"github.com/swordkee/gorm-cache-v2/util"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
 	"reflect"

@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/asjdf/gorm-cache/util"
 	"github.com/redis/go-redis/v9"
+	"github.com/swordkee/gorm-cache-v2/util"
 )
 
 var _ DataStorage = &Redis{}
@@ -14,8 +14,8 @@ var _ DataStorage = &Redis{}
 type RedisStoreConfig struct {
 	KeyPrefix string // key prefix will be random if not set
 
-	Client  *redis.Client // if Client is not nil, Options will be ignored
-	Options *redis.Options
+	Client  redis.UniversalClient // if Client is not nil, Options will be ignored
+	Options *redis.UniversalOptions
 }
 
 func NewRedis(config ...*RedisStoreConfig) *Redis {
@@ -32,12 +32,12 @@ func NewRedis(config ...*RedisStoreConfig) *Redis {
 		r.client = config[0].Client
 		return r
 	}
-	r.client = redis.NewClient(config[0].Options)
+	r.client = redis.NewUniversalClient(config[0].Options)
 	return r
 }
 
 type Redis struct {
-	client    *redis.Client
+	client    redis.UniversalClient
 	ttl       int64
 	logger    util.LoggerInterface
 	keyPrefix string

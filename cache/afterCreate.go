@@ -1,8 +1,8 @@
 package cache
 
 import (
-	"github.com/asjdf/gorm-cache/config"
-	"github.com/asjdf/gorm-cache/util"
+	"github.com/swordkee/gorm-cache-v2/config"
+	"github.com/swordkee/gorm-cache-v2/util"
 	"gorm.io/gorm"
 )
 
